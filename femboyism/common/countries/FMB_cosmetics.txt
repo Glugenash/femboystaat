@@ -1,0 +1,8 @@
+BRI_simp_govt = {
+	color = rgb { 110 57 94 }
+	color_ui = rgb { 110 57 94 }
+}
+SCO_simp_govt = {
+	color = rgb { 110 57 94 }
+	color_ui = rgb { 110 57 94 }
+}

@@ -1,0 +1,39 @@
+FMB_get_boyfriend = {
+	priority = { base = 11 }
+	allowed = { tag = FMB }
+	visible = { has_country_flag = FMB_searching_boyfriend NOT = { has_country_flag = FMB_has_boyfriend } }
+}
+FMB_get_girlfriend = {
+	priority = { base = 11 }
+	allowed = { tag = FMB }
+	visible = { has_country_flag = FMB_searching_girlfriend NOT = { has_country_flag = FMB_has_girlfriend } }
+}
+FMB_reforming_government = {
+	priority = { base = 12 }
+	allowed = { tag = FMB }
+	visible = { has_completed_focus = FMB_overthrow_femboystaat NOT = { has_completed_focus = FMB_expanding_race } }
+}
+FMB_perfecting_femboys = {
+	icon = generic_formable_nations
+	priority = { base = 13 }
+	allowed = { tag = FMB }
+	visible = { has_completed_focus = FMB_force_perfection NOT = { has_country_flag = modification_complete } }
+}
+FMB_simp_govt = {
+	icon = generic_political_actions
+	priority = { base = 13 }
+	allowed = { tag = FMB }
+	visible = { has_completed_focus = FMB_seed_grounds_obedience }
+}
+FMB_catboy_conversions = {
+	icon = generic_political_actions
+	priority = { base = 11 }
+	allowed = { tag = FMB }
+	visible = {  has_completed_focus = FMB_expanding_race }
+}
+FMB_GER_sabotage = {
+	icon = power_struggle
+	priority = { base = 12 }
+	allowed = { tag = FMB }
+	visible = {  has_completed_focus = FMB_sabotaging_german_war_effort }
+}

@@ -1,0 +1,407 @@
+add_namespace = femboy
+
+country_event = { #looking for partners
+	id = femboy.1
+	title = femboy.1.t
+	desc = femboy.1.d
+	picture = GFX_report_event_generic_riot
+	is_triggered_only = yes
+
+	option = { #girls
+		name = femboy.1.a
+		set_country_flag = FMB_searching_girlfriend
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #boys
+		name = femboy.1.b
+		set_country_flag = FMB_searching_boyfriend
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+country_event = { #looking for girls
+	id = femboy.2
+	title = femboy.2.t
+	desc = femboy.2.d
+	picture = GFX_report_event_generic_treaty
+	is_triggered_only = yes
+
+	option = { #get swole
+		name = femboy.2.a
+		add_ideas = FMB_get_swole
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+	}
+	option = { #get smart
+		name = femboy.2.b
+		add_ideas = FMB_get_smart
+	}
+	option = { #get attractive
+		name = femboy.3.a
+		add_ideas = FMB_get_attractive
+	}
+}
+
+country_event = { #looking for boys
+	id = femboy.3
+	title = femboy.3.t
+	desc = femboy.3.d
+	picture = GFX_report_event_generic_treaty
+	is_triggered_only = yes
+
+	option = { #get attractive
+		name = femboy.3.a
+		add_ideas = FMB_get_attractive
+	}
+	option = { #get smart
+		name = femboy.2.b
+		add_ideas = FMB_get_smart
+	}
+	option = { #get swole
+		name = femboy.2.a
+		add_ideas = FMB_get_swole
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = { #get a gf
+	id = femboy.4
+	title = femboy.4.t
+	desc = femboy.4.d
+	picture = GFX_report_event_generic_treaty
+	is_triggered_only = yes
+
+	option = { #big tiddy goth gf
+		name = femboy.4.a
+		add_ideas = FMB_goth_gf
+	}
+	option = { #clingy gf
+		name = femboy.4.b
+		add_ideas = FMB_clingy_gf
+	}
+	option = { #tomboy gf
+		name = femboy.4.c
+		add_ideas = FMB_tomboy_gf
+	}
+}
+
+country_event = { #get a bf
+	id = femboy.5
+	title = femboy.5.t
+	desc = femboy.5.d
+	picture = GFX_report_event_generic_treaty
+	is_triggered_only = yes
+
+	option = { #short femboy
+		name = femboy.5.a
+		add_ideas = FMB_femboy_bf
+	}
+	option = { #jock
+		name = femboy.5.b
+		add_ideas = FMB_jock_bf
+	}
+	option = { #catboy
+		name = femboy.5.c
+		add_ideas = FMB_catboy_bf
+	}
+}
+
+country_event = { #sports game
+	id = femboy.6
+	title = femboy.6.t
+	desc = femboy.6.d
+	picture = GFX_report_event_generic_treaty2
+	is_triggered_only = yes
+
+	option = { #tomboy party
+		name = femboy.6.a
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		set_country_flag = FMB_tomboy_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #chad party
+		name = femboy.6.b
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = yes
+		}
+		set_country_flag = FMB_chad_election
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+country_event = { #FMB asks to join Axis
+	id = femboy.7
+	title = femboy.7.t
+	desc = femboy.7.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+
+	option = { #accept
+		name = femboy.7.a
+		add_to_faction = FMB
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = { #chad party
+		name = femboy.7.b
+		FMB = {
+			add_opinion_modifier = {
+				target = GER
+				modifier = refused_help
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+country_event = { #celebration mishaps
+	id = femboy.8
+	title = femboy.8.t
+	desc = femboy.8.d
+	picture = GFX_report_event_carol_party
+	is_triggered_only = yes
+
+	option = { #keep astolfo in power
+		name = femboy.8.a
+		add_timed_idea = {
+			idea = FMB_celebration_mishap
+			days = 100
+		}
+	}
+	option = { #overthrow for ari
+		name = femboy.8.b
+		create_country_leader = {
+			name = "Saika Totsuka"
+			desc = "POLITICS_LEON_DEGRELLE_DESC"
+			picture = "Portrait_FMB_Ari.dds"
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+			traits = {
+				#
+			}
+		}
+	}
+}
+
+country_event = { #Demand LUX sumbission
+	id = femboy.9
+	title = femboy.9.t
+	desc = femboy.9.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+
+	option = { #submit
+		name = femboy.9.a
+		FMB = {
+			annex_country = {
+				target = LUX
+				transfer_troops = yes
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FMB
+					value > 50
+				}
+			}
+		}
+	}
+	option = { #death first!
+		name = femboy.9.b
+		FMB = {
+			create_wargoal = {
+				target = LUX
+				type = annex_everything
+				expire = 0
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FMB
+					ratio < 0.5
+				}
+			}
+		}
+	}
+}
+
+country_event = { #FMB Demands northern france
+	id = femboy.10
+	title = femboy.10.t
+	desc = femboy.10.d
+	picture = GFX_report_event_hitler_handshake
+	is_triggered_only = yes
+
+	option = { #yeah bro
+		name = femboy.10.a
+		if = {
+			limit = { owns_state = 14 }
+			FMB = {
+				transfer_state = 14
+			}
+		}
+		if = {
+			limit = { owns_state = 15 }
+			FMB = {
+				transfer_state = 15
+			}
+		}
+		if = {
+			limit = { owns_state = 16 }
+			FMB = {
+				transfer_state = 16
+			}
+		}
+		if = {
+			limit = { owns_state = 24 }
+			FMB = {
+				transfer_state = 24
+			}
+		}
+		if = {
+			limit = { owns_state = 30 }
+			FMB = {
+				transfer_state = 30
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = femboy.10.b
+		FMB = {
+			add_state_claim = 14
+			add_state_claim = 15
+			add_state_claim = 16
+			add_state_claim = 24
+			add_state_claim = 30
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = condemn_aggression 
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = { #dealing with commies
+	id = femboy.11
+	title = femboy.11.t
+	desc = femboy.11.d
+	picture = GFX_report_event_generic_treaty2
+	is_triggered_only = yes
+
+	option = { #outlaw communism
+		name = femboy.11.a
+		add_popularity = {
+			ideology = communism
+			popularity = -0.1
+		}
+	}
+	option = { #united front
+		name = femboy.11.b
+		set_temp_variable = { FMB_communist_support = party_popularity@communism }
+		multiply_temp_variable = { FMB_communist_support = 0.7 }
+		add_popularity = {
+			ideology = ROOT
+			popularity = FMB_communist_support
+		}
+	}
+}
+
+country_event = { #trading for guuarantees
+	id = femboy.12
+	title = femboy.12.t
+	desc = femboy.12.d
+	picture = GFX_report_event_marchant_ship_01
+	is_triggered_only = yes
+
+	option = { #guarantee
+		name = femboy.12.a
+		FMB = {
+			add_offsite_building = {
+				type = industrial_complex level = 1
+			}
+			hidden_effect = { country_event = femboy.13 }
+		}
+		ROOT = {
+			add_offsite_building = {
+				type = industrial_complex level = 2
+			}
+			give_guarantee = FMB
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = { #deny
+		name = femboy.12.b
+		FMB = {
+			hidden_effect = { country_event = femboy.14 }
+			add_opinion_modifier = {
+				target = FROM
+				modifier = minor_sanctions
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = { #offer accepted
+	id = femboy.13
+	title = femboy.13.t
+	desc = femboy.13.d
+	picture = GFX_report_event_marchant_ship_01
+	is_triggered_only = yes
+
+	option = { #nice
+		name = femboy.13.a
+	}
+}
+
+country_event = { #offer denied
+	id = femboy.14
+	title = femboy.14.t
+	desc = femboy.14.d
+	picture = GFX_report_event_marchant_ship_01
+	is_triggered_only = yes
+
+	option = { #F
+		name = femboy.14.a
+	}
+}
+
+country_event = { #GER supplies sabotaged!
+	id = femboy.15
+	title = femboy.15.t
+	desc = femboy.15.d
+	picture = GFX_report_event_albanian_partisans
+	is_triggered_only = yes
+
+	option = { #Who has done this???
+		name = femboy.15.a
+	}
+}

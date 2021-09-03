@@ -1,0 +1,112 @@
+leader_traits = {
+
+	esotericist = {
+		random = no
+		political_power_factor = 0.1
+		fascism_drift = 0.05
+		stability_factor = -0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	benevolent_dictator = {
+		random = no
+		political_power_cost = -0.1
+		fascism_drift = 0.05
+		stability_factor = 0.05
+		consumer_goods_factor = 0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	cat_king = {
+		random = no
+		political_power_cost = 0.1
+		fascism_drift = 0.05
+		justify_war_goal_time = -0.25
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	homofascist = {
+		random = no
+		political_power_factor = 0.2
+		fascism_drift = 0.1
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.05
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	fanatic_trainer = {
+		random = no
+		war_support_factor = 0.05
+		training_time_factor = -0.1
+		army_speed_factor = 0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	facts_and_logic = {
+		random = no
+		research_speed_factor = 0.05
+		drift_defence_factor = 0.25
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anarcho_tankie = {
+		random = no
+		political_power_factor = 0.1
+		stability_factor = -0.3
+		production_speed_buildings_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	gay_mouse = {
+		random = no
+		sprite = 13
+
+		fascism_drift = 0.05
+		war_support_factor = 0.05
+		non_core_manpower = 0.025
+	}
+
+	drug_smuggler = {
+		random = no
+		sprite = 10
+
+		consumer_goods_factor = -0.05
+		stability_factor = -0.05
+		research_speed_factor = 0.03
+	}
+
+	FMB_gigachad_memory = {
+		random = no
+		sprite = 7
+		army_attack_factor = 0.1
+		army_defence_factor = 0.05
+		
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+}

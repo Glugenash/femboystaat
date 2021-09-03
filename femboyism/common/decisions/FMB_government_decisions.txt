@@ -1,0 +1,686 @@
+FMB_reforming_government = {
+
+	stabilization_projects = {
+
+		icon = generic_construction
+		
+		cost = 50
+
+		days_remove = 70
+
+		days_re_enable = 80
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		modifier = {
+			consumer_goods_factor = 0.05
+			stability_weekly = 0.002
+		}
+	}
+
+	increasing_tomboy_rights = {
+
+		icon = generic_political_discourse
+		
+		cost = 50
+
+		days_remove = 50
+
+		days_re_enable = 30
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			NOT = {
+				OR = {
+					has_completed_focus = FMB_start_rationing_food
+					has_completed_focus = FMB_continue_military_rule
+				}
+			}
+		}
+
+		modifier = {
+			democratic_drift = 0.1
+			political_power_gain = 0.1
+		}
+
+		complete_effect = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.01
+			}
+		}
+	}
+
+	appeasing_cummunists = {
+
+		icon = eng_propaganda_campaigns
+		
+		cost = 50
+
+		days_remove = 50
+
+		days_re_enable = 30
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			NOT = {
+				OR = {
+					has_completed_focus = FMB_bring_sports_back
+					has_completed_focus = FMB_continue_military_rule
+				}
+			}
+		}
+
+		modifier = {
+			communism_drift = 0.1
+			consumer_goods_factor = -0.05
+		}
+
+		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.01
+			}
+		}
+	}
+
+	promoting_chad_ideals = {
+
+		icon = generic_industry
+		
+		cost = 50
+
+		days_remove = 50
+
+		days_re_enable = 30
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = {
+				OR = {
+					has_completed_focus = FMB_start_rationing_food
+					has_completed_focus = FMB_continue_military_rule
+				}
+			}
+		}
+
+		modifier = {
+			neutrality_drift = 0.1
+			war_support_weekly = 0.002
+		}
+
+		complete_effect = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.01
+			}
+		}
+	}
+
+	assuring_catboy_supremacy = {
+
+		icon = generic_army_support
+		
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			set_country_flag = FMB_catboy_supremacy
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			custom_effect_tooltip = FMB_new_order_tt
+		}
+	}
+
+}
+
+FMB_perfecting_femboys = {
+
+	achieved_perfection = {
+
+		icon = generic_form_nation
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_femboy_modification_tt
+				OR = {
+					AND = {
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_more_muscles
+						has_country_flag = FMB_less_emotions
+					}
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_more_muscles
+						has_country_flag = FMB_less_emotions
+					}
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_less_emotions
+					}
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_more_muscles
+					}
+				}
+			}
+		}
+
+		days_remove = 120
+
+		remove_effect = {
+			set_country_flag = modification_complete
+			if = {
+				limit = { 
+					has_country_flag = FMB_thicc_thighs
+					has_country_flag = FMB_more_muscles
+					has_country_flag = FMB_less_emotions
+				}
+				add_ideas = FMB_femboy_mod_6
+			}
+			if = {
+				limit = {
+					has_country_flag = FMB_wide_hips
+					has_country_flag = FMB_more_muscles
+					has_country_flag = FMB_less_emotions
+				}
+				add_ideas = FMB_femboy_mod_7
+			}
+			if = {
+				limit = {
+					has_country_flag = FMB_wide_hips
+					has_country_flag = FMB_thicc_thighs
+					has_country_flag = FMB_less_emotions
+				}
+				add_ideas = FMB_femboy_mod_5
+			}
+			if = {
+				limit = {
+					has_country_flag = FMB_wide_hips
+					has_country_flag = FMB_thicc_thighs
+					has_country_flag = FMB_more_muscles
+				}
+				add_ideas = FMB_femboy_mod_8
+			}
+		}
+
+	}
+	
+	making_more_fem = {
+
+		icon = generic_research
+
+		available = {
+			has_political_power > 999
+		}
+
+	}
+
+	widening_hips = {
+
+		cost = 50
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		fire_only_once = yes
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_not_too_modded
+				NOT	= {
+					AND = {
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_more_muscles
+						has_country_flag = FMB_less_emotions
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = FMB_wide_hips
+		}
+
+	}
+
+	thicc_thighs = {
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_not_too_modded
+				NOT	= {
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_more_muscles
+						has_country_flag = FMB_less_emotions
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = FMB_thicc_thighs
+		}
+
+	}
+
+	making_more_boy = {
+
+		icon = generic_research
+
+		available = {
+			has_political_power > 999
+		}
+
+	}
+
+	more_muscles = {
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_not_too_modded
+				NOT	= {
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_less_emotions
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = FMB_more_muscles
+		}
+
+	}
+
+	more_recklessness = {
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_not_too_modded
+				NOT	= {
+					AND = {
+						has_country_flag = FMB_wide_hips
+						has_country_flag = FMB_thicc_thighs
+						has_country_flag = FMB_more_muscles
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = FMB_less_emotions
+		}
+
+	}
+
+}
+
+FMB_simp_govt = {
+	
+	FMB_nord_frank_kommissariat = {
+
+		icon = ger_reichskommissariats
+
+		visible = {
+			has_completed_focus = FMB_seed_grounds_obedience
+			has_government = fascism
+		}
+
+		available = {
+			has_government = fascism
+			has_completed_focus = FMB_seed_grounds_obedience
+			controls_state = 14
+			controls_state = 15
+			controls_state = 30
+			controls_state = 24
+			controls_state = 16
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				FRA = {
+					has_capitulated = yes
+				}
+			}
+		}
+
+		complete_effect = {
+			BRI = {
+				transfer_state = 14
+				transfer_state = 15
+				transfer_state = 16
+				transfer_state = 30
+				transfer_state = 24
+				hidden_effect = {
+					set_politics = {
+						ruling_party = fascism
+						elections_allowed = no
+					}
+					add_state_core = 15
+					add_state_core = 16
+					add_state_core = 24
+					add_state_core = 30
+				}
+				FMB = {
+					puppet = PREV
+					set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet }
+				}
+				set_cosmetic_tag = BRI_simp_govt
+			}
+		}
+
+	}
+
+	FMB_scotland_kommissariat = {
+
+		icon = ger_reichskommissariats
+
+		visible = {
+			has_completed_focus = FMB_seed_grounds_obedience
+			has_government = fascism
+		}
+
+		available = {
+			has_government = fascism
+			has_completed_focus = FMB_seed_grounds_obedience
+			controls_state = 121
+			controls_state = 120
+			controls_state = 133
+			controls_state = 136
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				ENG = {
+					has_capitulated = yes
+				}
+			}
+		}
+
+		complete_effect = {
+			SCO = {
+				transfer_state = 121
+				transfer_state = 120
+				transfer_state = 133
+				transfer_state = 136
+				hidden_effect = {
+					set_politics = {
+						ruling_party = fascism
+						elections_allowed = no
+					}
+				}
+				FMB = {
+					puppet = PREV
+					set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet }
+				}
+				set_cosmetic_tag = SCO_simp_govt
+			}
+		}
+
+	}
+
+}
+
+FMB_catboy_conversions = {
+
+	FMB_increase_batch_size = {
+
+		icon = generic_factory
+
+		cost = 25
+
+		days_re_enable = 100
+
+		complete_effect = {
+			set_country_flag = FMB_expand_batch
+			custom_effect_tooltip = FMB_batch_size_tt
+			add_stability = -0.005
+		}
+
+	}
+
+	FMB_seize_off_streets = {
+
+		icon = generic_civil_support
+
+		cost = 50
+
+		days_re_enable = 100
+
+		days_remove = 100
+
+		modifier = {
+			monthly_population = 0.3
+			stability_weekly = -0.002
+		}
+
+		complete_effect = {
+			add_manpower = -300
+		}
+
+	}
+
+	FMB_slow_conversions = {
+
+		icon = generic_political_discourse
+
+		cost = 50
+
+		days_re_enable = 80
+
+		days_remove = 70
+
+		modifier = {
+			stability_weekly = 0.0025
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FMB_conversion_batch
+				days = 50
+			}
+		}
+
+	}
+	
+	FMB_conversion_batch = {
+
+		icon = generic_industry
+
+		activation = { has_completed_focus = FMB_expanding_race }
+
+		available = {
+			has_political_power > 999
+		}
+
+		is_good = yes
+
+		days_re_enable = 25
+
+		days_mission_timeout = 75
+
+		timeout_effect = {
+			if = {
+				limit = { has_country_flag = FMB_expand_batch }
+				add_manpower = 2000
+				clr_country_flag = FMB_expand_batch
+			}
+			if = {
+				limit = { NOT = { has_country_flag = FMB_expand_batch } }
+				add_manpower = 1000
+			}
+			add_stability = -0.01
+		}
+
+	}
+
+}
+
+FMB_GER_sabotage = {
+
+	FMB_siphon_supply_lines = {
+
+		icon = generic_infrastructure
+
+		cost = 30
+
+		days_re_enable = 50
+
+		available = {
+			is_in_faction_with = GER
+			GER = {
+				has_war = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		days_remove = 10
+
+		remove_effect = {
+			GER = {
+				add_timed_idea = {
+					idea = FMB_sabotaged_supply_lines
+					days = 100
+				}
+				country_event =  femboy.15
+			}
+			add_timed_idea = {
+				idea = FMB_siphoned_german_supplies
+				days = 100
+			}
+		}
+
+	}
+
+	FMB_leak_GER_intel = {
+
+		icon = generic_political_discourse
+
+		available = {
+			is_in_faction_with = GER
+			GER = {
+				has_war = yes
+			}
+		}
+
+		cost = 50
+
+		days_re_enable = 180
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_effect = {
+			every_country = {
+				limit = { has_war_with = GER }
+				add_timed_idea = {
+					days = 30
+					idea = FMB_leaked_german_intel
+				}
+			}
+		}
+
+	}
+
+	FMB_import_GER_anti_war_propaganda = {
+
+		icon = oppression
+
+		available = {
+			is_in_faction_with = GER
+			GER = {
+				has_war = yes
+			}
+		}
+
+		cost = 50
+
+		days_remove = 90
+		days_re_enable = 90
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		modifier = {
+			consumer_goods_factor = 0.03
+			political_power_cost = 0.05
+		}
+
+		complete_effect = {
+			GER = {
+				add_war_support = -0.02
+				add_stability = -0.01
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+			}
+		}
+
+	}
+
+}

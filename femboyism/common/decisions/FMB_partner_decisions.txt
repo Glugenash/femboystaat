@@ -1,0 +1,716 @@
+FMB_get_boyfriend = {
+	
+	FMB_BF_workout = {
+
+		cost = 25
+
+		days_re_enable = 40
+
+		available = { NOT = { has_idea = FMB_get_smart } }
+
+		icon = generic_army_support
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		days_remove = 20
+
+		modifier = {
+			conscription_factor = -0.1
+			training_time_factor = -0.1
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 94 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 6 }
+				custom_effect_tooltip = FMB_increase_boyfriend_6
+			}
+			add_manpower = 1000
+		}
+
+	}
+
+	FMB_BF_build_factory = {
+
+		cost = 75
+
+		days_re_enable = 100
+
+		icon = generic_factory
+
+		available = {
+			NOT = {
+				has_idea = FMB_get_attractive
+			}
+			any_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 94 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 6 }
+				custom_effect_tooltip = FMB_increase_boyfriend_6
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+
+	FMB_BF_help_carry_stuff = {
+
+		cost = 25
+
+		days_re_enable = 40
+
+		icon = generic_nationalism
+
+		available = { NOT = { has_idea = FMB_get_smart } }
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 96 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 4 }
+				custom_effect_tooltip = FMB_increase_boyfriend_4
+			}
+			
+		}
+
+	}
+
+	FMB_BF_makeup_practice = {
+
+		cost = 50
+
+		days_re_enable = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_swole } }
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_boyfriend_3
+			}
+		}
+
+	}
+
+	FMB_BF_nice_clothes = {
+
+		cost = 25
+
+		days_re_enable = 80
+		days_remove = 20
+
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_swole } }
+
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_boyfriend_3
+			}
+		}
+
+	}
+
+	FMB_BF_study = {
+
+		cost = 50
+
+		days_re_enable = 90
+		days_remove = 30
+
+		icon = generic_research
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_idea = FMB_get_smart
+		}
+
+		modifier = {
+			political_power_gain = -0.2
+			research_speed_factor = 0.05
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_boyfriend_3
+			}
+		}
+
+	}
+
+	FMB_BF_help_workers = {
+
+		cost = 50
+
+		days_re_enable = 110
+		days_remove = 90
+
+		icon = generic_industry
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_attractive } }
+
+		modifier = {
+			research_speed_factor = -0.05
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 96 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 4 }
+				custom_effect_tooltip = FMB_increase_boyfriend_4
+			}
+		}
+
+	}
+
+	FMB_BF_show_off_knowledge = {
+
+		cost = 25
+
+		days_re_enable = 60
+
+		icon = generic_research
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_idea = FMB_get_smart
+		}
+
+		fixed_random_seed = no
+
+		complete_effect = {
+			random_list = {
+				50 = {
+					if = {
+						limit = { check_variable = { var = FMB_getting_boyfriend value = 97 	compare = less_than_or_equals } }
+						add_to_variable = { var = FMB_getting_boyfriend value = 3 }
+						custom_effect_tooltip = FMB_increase_boyfriend_3
+					}
+				}
+				50 = {
+					if = {
+						limit = { check_variable = { var = FMB_getting_boyfriend value = 3 	compare = greater_than_or_equals } }
+						add_to_variable = { var = FMB_getting_boyfriend value = -3 }
+						custom_effect_tooltip = FMB_decrease_boyfriend_3
+					}
+				}
+			}
+		}
+
+	}
+
+	FMB_BF_get_rich = {
+
+		cost = 25
+
+		days_re_enable = 60
+		days_remove = 30
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			any_owned_state = {
+				NOT = {
+					is_core_of = FMB
+				}
+			}
+		}
+
+		modifier = {
+			political_power_cost = -0.1
+			consumer_goods_factor = -0.1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 3 compare = greater_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = -3 }
+				custom_effect_tooltip = FMB_decrease_boyfriend_3
+			}
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 95 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 5 }
+				custom_effect_tooltip = FMB_increase_boyfriend_5
+			}
+		}
+
+	}
+
+	FMB_get_BF = {
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_100_BF
+				check_variable = { var = FMB_getting_boyfriend value = 98 compare = greater_than_or_equals }
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			country_event = femboy.5
+			set_country_flag = FMB_has_boyfriend
+		}
+
+	}
+
+}
+
+FMB_get_girlfriend = {
+	
+	FMB_GF_workout = {
+
+		cost = 25
+
+		available = { NOT = { has_idea = FMB_get_smart } }
+
+		icon = generic_army_support
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		days_remove = 20
+
+		days_re_enable = 40
+
+		modifier = {
+			conscription_factor = -0.1
+			training_time_factor = -0.1
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 93 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 6 }
+				custom_effect_tooltip = FMB_increase_girlfriend_6
+			}
+			add_manpower = 1000
+		}
+
+	}
+
+	FMB_GF_build_factory = {
+
+		cost = 75
+
+		days_re_enable = 100
+
+		icon = generic_factory
+
+		available = {
+			NOT = {
+				has_idea = FMB_get_attractive
+			}
+			any_owned_state = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 94 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 6 }
+				custom_effect_tooltip = FMB_increase_girlfriend_6
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+
+	FMB_GF_help_carry_stuff = {
+
+		cost = 25
+
+		days_re_enable = 40
+
+		icon = generic_nationalism
+
+		available = { NOT = { has_idea = FMB_get_smart } }
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 96 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 4 }
+				custom_effect_tooltip = FMB_increase_girlfriend_4
+			}
+			if = {
+				limit = { has_government = communism }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.03
+				}
+			}
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.03
+				}
+			}
+			if = {
+				limit = { has_government = democratic }
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.03
+				}
+			}
+			if = {
+				limit = { has_government = neutrality }
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.03
+				}
+			}
+		}
+
+	}
+
+	FMB_GF_makeup_practice = {
+
+		cost = 50
+
+		days_re_enable = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_swole } }
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_girlfriend_3
+			}
+		}
+
+	}
+
+	FMB_GF_nice_clothes = {
+
+		cost = 25
+
+		days_re_enable = 80
+		days_remove = 20
+
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_swole } }
+
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_girlfriend_3
+			}
+		}
+
+	}
+
+	FMB_GF_study = {
+
+		cost = 50
+
+		days_re_enable = 90
+		days_remove = 30
+
+		icon = generic_research
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		modifier = {
+			political_power_gain = -0.2
+			research_speed_factor = 0.05
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 97 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 3 }
+				custom_effect_tooltip = FMB_increase_girlfriend_3
+			}
+		}
+
+	}
+
+	FMB_GF_help_workers = {
+
+		cost = 50
+
+		days_re_enable = 110
+		days_remove = 90
+
+		icon = generic_industry
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { NOT = { has_idea = FMB_get_attractive } }
+
+		modifier = {
+			research_speed_factor = -0.05
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 96 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 4 }
+				custom_effect_tooltip = FMB_increase_girlfriend_4
+			}
+		}
+
+	}
+
+	FMB_GF_show_off_knowledge = {
+
+		cost = 25
+
+		days_re_enable = 60
+
+		icon = generic_research
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_idea = FMB_get_smart
+		}
+
+		fixed_random_seed = no
+
+		complete_effect = {
+			random_list = {
+				50 = {
+					if = {
+						limit = { check_variable = { var = FMB_getting_girlfriend value = 97 	compare = less_than_or_equals } }
+						add_to_variable = { var = FMB_getting_girlfriend value = 3 }
+						custom_effect_tooltip = FMB_increase_girlfriend_3
+					}
+				}
+				50 = {
+					if = {
+						limit = { check_variable = { var = FMB_getting_girlfriend value = 3 	compare = greater_than_or_equals } }
+						add_to_variable = { var = FMB_getting_girlfriend value = -3 }
+						custom_effect_tooltip = FMB_decrease_girlfriend_3
+					}
+				}
+			}
+		}
+
+	}
+
+	FMB_GF_get_rich = {
+
+		cost = 25
+
+		days_re_enable = 60
+		days_remove = 30
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			any_owned_state = {
+				NOT = {
+					is_core_of = FMB
+				}
+			}
+		}
+
+		modifier = {
+			political_power_cost = -0.1
+			consumer_goods_factor = -0.1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 3 compare = greater_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = -3 }
+				custom_effect_tooltip = FMB_decrease_girlfriend_3
+			}
+		}
+
+		remove_effect = {
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 95 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 5 }
+				custom_effect_tooltip = FMB_increase_girlfriend_5
+			}
+		}
+
+	}
+
+	FMB_get_GF = {
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_100_GF
+				check_variable = { var = FMB_getting_girlfriend value = 98 compare = greater_than_or_equals }
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			country_event = femboy.4
+			set_country_flag = FMB_has_girlfriend
+		}
+
+	}
+
+}

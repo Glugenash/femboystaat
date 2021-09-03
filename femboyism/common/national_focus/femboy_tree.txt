@@ -1,0 +1,2765 @@
+focus_tree = {
+	id = femboy_time
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = FMB
+		}
+	}
+	
+	default = no
+
+	focus = {
+		id = FMB_expand_industrial_dong
+		icon = GFX_goal_generic_construct_civilian
+		x = 4
+		y = 0
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_prepare_domination
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = FMB_expand_industrial_dong }
+		relative_position_id = FMB_expand_industrial_dong
+		x = 2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			army_experience = 10
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_study_seas
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = FMB_expand_industrial_dong }
+		relative_position_id = FMB_expand_industrial_dong
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = USA_fund_the_navy
+				uses = 1
+				bonus = 1.0
+				category = naval_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_expanding_tactics_research
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = FMB_prepare_domination }
+		relative_position_id = FMB_prepare_domination
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 2.0
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_making_gigachads_legacy_greater
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = FMB_expanding_tactics_research }
+		relative_position_id = FMB_expanding_tactics_research
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			has_government = neutrality
+			has_idea = FMB_gigachad_legacy
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = FMB_gigachad_legacy
+				add_idea = FMB_gigachad_legacy_2
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_weapon_innovation
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = FMB_expanding_tactics_research }
+		relative_position_id = FMB_expanding_tactics_research
+		x = -1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 2.0
+				uses = 2
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_armor_research
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = FMB_weapon_innovation }
+		relative_position_id = FMB_weapon_innovation
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_cast_down_gigachad
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = FMB_weapon_innovation }
+		relative_position_id = FMB_weapon_innovation
+		x = -2
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				add = -1
+				has_completed_focus = FMB_overthrow_femboystaat
+			}
+		}
+
+		completion_reward = {
+			remove_ideas = FMB_gigachad_legacy
+			add_stability = -0.05
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = FMB_new_doctrines
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = FMB_cast_down_gigachad }
+		relative_position_id = FMB_cast_down_gigachad
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 1.0
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_remember_omegachad
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = FMB_weapon_innovation }
+		relative_position_id = FMB_weapon_innovation
+		x = 2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 1.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_new_fighters
+		icon = GFX_goal_generic_air_fighter2
+		prerequisite = { focus = FMB_remember_omegachad }
+		relative_position_id = FMB_remember_omegachad
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.0
+				uses = 2
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_learn_from_neighbors
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = FMB_expand_industrial_dong }
+		relative_position_id = FMB_expand_industrial_dong
+		x = -2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_german_work_ethic
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = FMB_learn_from_neighbors }
+		relative_position_id = FMB_learn_from_neighbors
+		x = 1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 2.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_french_something
+		icon = GFX_focus_chi_reach_out_to_france
+		prerequisite = { focus = FMB_learn_from_neighbors }
+		relative_position_id = FMB_learn_from_neighbors
+		x = -1
+		y = 1
+		cost = 10
+
+		bypass = {
+			FRA = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_tech_stuff
+		icon = GFX_focus_research
+		prerequisite = { focus = FMB_french_something }
+		prerequisite = { focus = FMB_german_work_ethic }
+		relative_position_id = FMB_learn_from_neighbors
+		x = 0
+		y = 2
+		cost = 10
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = FMB_take_shower
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 10
+		y = 0
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			add_political_power = 75
+		}
+	}
+
+	focus = {
+		id = FMB_look_for_partners
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = FMB_take_shower }
+		relative_position_id = FMB_take_shower
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			country_event = femboy.1
+		}
+	}
+
+	focus = {
+		id = FMB_how_girlfriend
+		icon = GFX_focus_focus_fra_revolution_utmost
+		prerequisite = { focus = FMB_look_for_partners }
+		relative_position_id = FMB_look_for_partners
+		x = -1
+		y = 1
+		cost = 10
+		allow_branch = { has_country_flag = FMB_searching_girlfriend }
+
+		completion_reward = {
+			country_event = femboy.2
+		}
+	}
+
+	focus = {
+		id = FMB_promote_womens_rights
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = FMB_how_girlfriend }
+		relative_position_id = FMB_look_for_partners
+		x = -1
+		y = 2
+		cost = 5
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_100_GF
+				check_variable = { var = FMB_getting_girlfriend value = 100 compare = equals }
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			if = {
+				limit = { check_variable = { var = FMB_getting_girlfriend value = 90 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_girlfriend value = 10 }
+				custom_effect_tooltip = FMB_increase_girlfriend_10
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_gf_sex
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = FMB_promote_womens_rights }
+		relative_position_id = FMB_promote_womens_rights
+		x = 0
+		y = 1
+		cost = 5
+
+		available = {
+			has_country_flag = FMB_has_girlfriend
+		}
+
+		completion_reward = {
+			add_ideas = FMB_not_virgin
+			every_country = {
+				limit = { NOT = { tag = FMB } }
+				add_opinion_modifier = {
+					target = FMB
+					modifier = medium_decrease
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_how_boyfriend
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = FMB_look_for_partners }
+		relative_position_id = FMB_look_for_partners
+		x = 1
+		y = 1
+		cost = 10
+		allow_branch = { has_country_flag = FMB_searching_boyfriend }
+
+		completion_reward = {
+			country_event = femboy.3
+		}
+	}
+
+	focus = {
+		id = FMB_provide_cooking
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = FMB_how_boyfriend }
+		relative_position_id = FMB_look_for_partners
+		x = 1
+		y = 2
+		cost = 5
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = FMB_100_BF
+				check_variable = { var = FMB_getting_boyfriend value = 100 compare = equals }
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			if = {
+				limit = { check_variable = { var = FMB_getting_boyfriend value = 90 compare = less_than_or_equals } }
+				add_to_variable = { var = FMB_getting_boyfriend value = 10 }
+				custom_effect_tooltip = FMB_increase_boyfriend_10
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_bf_sex
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = FMB_provide_cooking }
+		relative_position_id = FMB_provide_cooking
+		x = 0
+		y = 1
+		cost = 5
+
+		available = {
+			has_country_flag = FMB_has_boyfriend
+		}
+
+		completion_reward = {
+			add_ideas = FMB_not_virgin
+			every_country = {
+				limit = { NOT = { tag = FMB } }
+				add_opinion_modifier = {
+					target = FMB
+					modifier = medium_decrease
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_turn_against_fascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		mutually_exclusive = { focus = FMB_femboy_supremacy }
+		x = 26
+		y = 0
+		cost = 5
+
+		bypass = {
+			NOT = {
+				has_government = fascism
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.1
+			}
+			add_ideas = FMB_based_antifa
+		}
+	}
+
+	focus = {
+		id = FMB_femboy_supremacy
+		icon = GFX_goal_demand_sudetenland
+		mutually_exclusive = { focus = FMB_turn_against_fascism }
+		x = 17
+		y = 0
+		cost = 10
+
+		available = {
+			has_government = fascism
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = FMB_already_perfect
+		icon = GFX_goal_anschluss
+		prerequisite = { focus = FMB_femboy_supremacy }
+		mutually_exclusive = { focus = FMB_force_perfection }
+		relative_position_id = FMB_femboy_supremacy
+		x = -2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_force_perfection
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = FMB_femboy_supremacy }
+		mutually_exclusive = { focus = FMB_already_perfect }
+		relative_position_id = FMB_femboy_supremacy
+		x = 1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_stability = -0.05
+			unlock_decision_category_tooltip = FMB_perfecting_femboys
+		}
+	}
+
+	focus = {
+		id = FMB_perfecting_industry
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = FMB_force_perfection }
+		relative_position_id = FMB_force_perfection
+		x = 2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.75
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_ally_lesser_beings
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = FMB_force_perfection focus = FMB_already_perfect }
+		mutually_exclusive = { focus = FMB_stand_alone }
+		relative_position_id = FMB_force_perfection
+		x = 0
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			every_country = {
+				limit = { has_government = ROOT }
+				add_opinion_modifier = {
+					target = FMB
+					modifier = took_stand_for_us
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_ask_join_axis
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = FMB_ally_lesser_beings }
+		relative_position_id = FMB_ally_lesser_beings
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+			GER = {
+				has_government = fascism
+				is_faction_leader = yes
+			}
+		}
+
+		bypass = {
+			GER = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+
+		completion_reward = {
+			GER = {
+				country_event = femboy.7
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_seed_grounds_obedience
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = FMB_ally_lesser_beings }
+		relative_position_id = FMB_ally_lesser_beings
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				any_owned_state = {
+					NOT = { is_core_of = FMB }
+				}
+				has_war = yes
+			}
+		}
+
+		completion_reward = {
+			hidden_effect = {
+				unlock_decision_category_tooltip = FMB_simp_govt
+			}
+			custom_effect_tooltip = FMB_kommisariat_tt
+		}
+	}
+
+	focus = {
+		id = FMB_use_german_industrial_aid
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = FMB_ask_join_axis }
+		relative_position_id = FMB_ask_join_axis
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				is_in_faction_with = GER
+				GER = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			34 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_submit_to_germany
+		icon = GFX_focus_ger_reichskommisariats
+		prerequisite = { focus = FMB_use_german_industrial_aid }
+		mutually_exclusive = { focus = FMB_glory_of_our_own }
+		relative_position_id = FMB_use_german_industrial_aid
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+			is_in_faction_with = GER
+		}
+
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = FMB
+					modifier = aided_industry 
+				}
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_integrate_our_war_economies
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = FMB_submit_to_germany }
+		relative_position_id = FMB_submit_to_germany
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			is_in_faction_with = GER
+			GER = {
+				has_completed_focus = GER_integrate_war_economies
+			}
+		}
+
+		completion_reward = {
+			GER = {
+				add_offsite_building = { type = arms_factory level = 4 }
+				puppet = FMB
+			}
+			add_offsite_building = { type = arms_factory level = 4 }
+		}
+	}
+
+	focus = {
+		id = FMB_further_military_cooperation
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = FMB_submit_to_germany }
+		relative_position_id = FMB_submit_to_germany
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+			is_in_faction_with = GER
+		}
+
+		completion_reward = {
+			add_ideas = FMB_german_millitary_cooperation
+		}
+	}
+
+	focus = {
+		id = FMB_prepare_domination_sea
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = FMB_ask_join_axis }
+		relative_position_id = FMB_ask_join_axis
+		x = 1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			29 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = dockyard
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_glory_of_our_own
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = FMB_prepare_domination_sea }
+		mutually_exclusive = { focus = FMB_submit_to_germany }
+		relative_position_id = FMB_prepare_domination_sea
+		x = 0
+		y = 2
+		cost = 10
+
+		completion_reward = {
+			add_political_power = 75
+			set_rule = { can_create_factions = yes }
+		}
+	}
+
+	focus = {
+		id = FMB_strike_from_north
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = FMB_glory_of_our_own }
+		relative_position_id = FMB_glory_of_our_own
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+			FRA = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = FMB
+				}
+			}
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				target = FRA
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_demand_rightful_lands
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		prerequisite = { focus = FMB_glory_of_our_own }
+		relative_position_id = FMB_glory_of_our_own
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			any_allied_country = {
+				controls_state = 14
+				controls_state = 15
+				controls_state = 16
+				controls_state = 30
+				controls_state = 24
+			}
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					controls_state = 14
+					controls_state = 15
+					controls_state = 16
+					controls_state = 30
+					controls_state = 24
+				}
+				any_country = {
+					is_subject_of = FMB
+					controls_state = 14
+					controls_state = 15
+					controls_state = 16
+					controls_state = 30
+					controls_state = 24
+				}
+			}
+		}
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 14
+						controls_state = 15
+						controls_state = 16
+						controls_state = 30
+						controls_state = 24
+					}
+				}
+				country_event = femboy.10
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_sabotaging_german_war_effort
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = FMB_demand_rightful_lands }
+		relative_position_id = FMB_demand_rightful_lands
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+			is_in_faction_with = GER
+			GER = {
+				has_war = yes
+			}
+		}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = FMB_GER_sabotage
+		}
+	}
+
+	focus = {
+		id = FMB_surprise_attack
+		icon = GFX_focus_attack_germany
+		prerequisite = { focus = FMB_sabotaging_german_war_effort }
+		relative_position_id = FMB_sabotaging_german_war_effort
+		x = 0
+		y = 1
+		cost = 35
+
+		available = {
+			is_in_faction_with = GER
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = GER
+				value = 50
+			}
+		}
+
+		completion_reward = {
+			leave_faction = yes
+			create_wargoal = {
+				target = GER
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_improve_italian_relations
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = FMB_submit_to_germany focus = FMB_glory_of_our_own}
+		relative_position_id = FMB_submit_to_germany
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+			ITA = {
+				has_government = fascism
+			}
+		}
+
+		completion_reward = {
+			ITA = {
+				add_opinion_modifier = {
+					modifier = GRE_fascist_leanings 
+					target = FMB
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_crush_british_isles
+		icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+		prerequisite = { focus = FMB_prepare_domination_sea focus = FMB_use_german_industrial_aid }
+		relative_position_id = FMB_prepare_domination_sea
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				is_in_faction = yes
+				strength_ratio = {
+					tag = ENG
+					ratio > 0.75
+				}
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				expire = 0
+				target = ENG
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = IRE
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_stand_alone
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = FMB_force_perfection focus = FMB_already_perfect }
+		mutually_exclusive = { focus = FMB_ally_lesser_beings }
+		relative_position_id = FMB_force_perfection
+		x = -3
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.05
+			add_ideas = FMB_standing_alone
+		}
+	}
+
+	focus = {
+		id = FMB_self_sufficient_industry
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = FMB_stand_alone }
+		relative_position_id = FMB_stand_alone
+		x = -2
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = {
+				FMB_self_sufficiency
+				closed_economy
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_going_north
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = FMB_stand_alone }
+		relative_position_id = FMB_stand_alone
+		x = 0
+		y = 1
+		cost = 10
+
+		bypass = {
+			HOL = {
+				exists = no
+			}
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = HOL
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				target = HOL
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_recruiting_foreign_femboys
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = FMB_going_north }
+		relative_position_id = FMB_going_north
+		x = 0
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 3
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = FMB_foreign_femboy
+		}
+	}
+
+	focus = {
+		id = FMB_homofascism
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = { focus = FMB_recruiting_foreign_femboys }
+		relative_position_id = FMB_recruiting_foreign_femboys
+		x = -2
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_country_leader_trait = homofascist
+		}
+	}
+
+	focus = {
+		id = FMB_retaking_homeland
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = FMB_recruiting_foreign_femboys }
+		relative_position_id = FMB_recruiting_foreign_femboys
+		x = 0
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 3
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			add_state_claim = 18
+			add_state_claim = 27
+			add_war_support = 0.05
+			create_wargoal = {
+				target = FRA
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_attractive_occupiers
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = FMB_retaking_homeland }
+		prerequisite = { focus = FMB_homofascism }
+		relative_position_id = FMB_homofascism
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_hot_occupiers
+			every_state = {
+				limit = { is_controlled_by = FMB resistance > 10 }
+				add_resistance = -10
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_homecoming_complete
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = FMB_retaking_homeland }
+		relative_position_id = FMB_retaking_homeland
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			HOL = {
+				exists = no
+			}
+			controls_state = 18
+			controls_state = 27
+		}
+
+		completion_reward = {
+			add_state_core = 27
+			18 = {
+				add_core_of = FMB
+				set_state_name = "Burgundy"
+			}
+			every_state = {
+				limit = { is_core_of = HOL }
+				add_core_of = FMB
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_accepting_germanic_heritage
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = FMB_homecoming_complete }
+		relative_position_id = FMB_homecoming_complete
+		x = 0
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			if = {
+				limit = { LUX = { exists = yes } }
+				annex_country = {
+					target = LUX
+					transfer_troops = yes
+				}
+			}
+			add_state_core = 8
+			add_state_core = 28
+		}
+	}
+
+	focus = {
+		id = FMB_the_great_celebration
+		icon = GFX_focus_rom_parties_end
+		prerequisite = { focus = FMB_homecoming_complete }
+		relative_position_id = FMB_homecoming_complete
+		x = -3
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_political_power = 150
+			country_event = femboy.8
+		}
+	}
+
+	focus = {
+		id = FMB_crack_down_dissidents
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = FMB_the_great_celebration }
+		mutually_exclusive = { focus = FMB_solidifying_power }
+		relative_position_id = FMB_the_great_celebration
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+			has_country_leader = {
+				name = "Über Astolfo"
+				ruling_only = yes
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FMB_solidifying_power
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = FMB_the_great_celebration }
+		mutually_exclusive = { focus = FMB_crack_down_dissidents }
+		relative_position_id = FMB_the_great_celebration
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+			has_country_leader = {
+				name = "Saika Totsuka"
+				ruling_only = yes
+			}
+		}
+
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FMB_non_femboy_work_camps
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = FMB_crack_down_dissidents }
+		relative_position_id = FMB_crack_down_dissidents
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_benevolent_leader
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = FMB_solidifying_power }
+		relative_position_id = FMB_solidifying_power
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_country_leader_trait = benevolent_dictator
+		}
+	}
+
+	focus = {
+		id = FMB_towards_europa
+		icon = GFX_focus_ger_great_red_menace
+		prerequisite = { focus = FMB_benevolent_leader focus = FMB_non_femboy_work_camps }
+		relative_position_id = FMB_non_femboy_work_camps
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			GER = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			every_state = {
+				limit = { is_core_of = GER }
+				add_core_of = FMB
+			}
+			set_cosmetic_tag = FMB_germany
+		}
+	}
+
+	focus = {
+		id = FMB_to_the_south
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = FMB_towards_europa }
+		relative_position_id = FMB_towards_europa
+		x = -1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			create_wargoal = {
+				target = ITA
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = SPR
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = POR
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = SWI
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_securing_south
+		icon = GFX_goal_molotov_ribbentrop_pact
+		prerequisite = { focus = FMB_to_the_south }
+		relative_position_id = FMB_to_the_south
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			ITA = {
+				exists = no
+			}
+			SPR = {
+				exists = no
+			}
+			POR = {
+				exists = no
+			}
+			SWI = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			every_state = {
+				limit = { OR = { is_core_of = ITA is_core_of = SPR is_core_of = POR is_core_of = SWI } is_owned_by = FMB }
+				add_compliance = 20
+				add_resistance = -20
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_to_the_north
+		icon = GFX_goal_generic_more_territorial_claims
+		prerequisite = { focus = FMB_towards_europa }
+		relative_position_id = FMB_towards_europa
+		x = 1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			create_wargoal = {
+				target = DEN
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = NOR
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = SWE
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = FIN
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_securing_north
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = { focus = FMB_to_the_north }
+		relative_position_id = FMB_to_the_north
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			FIN = {
+				exists = no
+			}
+			NOR = {
+				exists = no
+			}
+			DEN = {
+				exists = no
+			}
+			SWE = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			every_state = {
+				limit = { OR = { is_core_of = FIN is_core_of = DEN is_core_of = SWE is_core_of = NOR } is_owned_by = FMB }
+				add_compliance = 20
+				add_resistance = -20
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_to_the_east
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = FMB_to_the_north }
+		prerequisite = { focus = FMB_to_the_south }
+		relative_position_id = FMB_towards_europa
+		x = 0
+		y = 2
+		cost = 10
+
+		completion_reward = {
+			create_wargoal = {
+				target = CZE
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = HUN
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = YUG
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = POL
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = ROM
+				type = annex_everything
+				expire = 0
+			}
+			create_wargoal = {
+				target = BUL
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_femboy_europa
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = FMB_securing_north }
+		prerequisite = { focus = FMB_to_the_east }
+		prerequisite = { focus = FMB_securing_south }
+		relative_position_id = FMB_to_the_east
+		x = 0
+		y = 1
+		cost = 20
+
+		available = {
+			CZE = {
+				exists = no
+			}
+			POL = {
+				exists = no
+			}
+			YUG = {
+				exists = no
+			}
+			HUN = {
+				exists = no
+			}
+			BUL = {
+				exists = no
+			}
+			ROM = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			set_cosmetic_tag = FMB_europa
+			every_state = {
+				limit = { is_on_continent = europe }
+				add_core_of = FMB
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_the_true_german_heirs
+		icon = GFX_focus_attack_germany
+		prerequisite = { focus = FMB_accepting_germanic_heritage }
+		relative_position_id = FMB_accepting_germanic_heritage
+		x = 0
+		y = 1
+		cost = 10
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = GER
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = FMB_true_germanic_heirs
+				days = 365
+			}
+			every_state = {
+				limit = { is_core_of = GER }
+				add_claim_by = FMB
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = GER
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_using_german_scientists
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = FMB_the_true_german_heirs }
+		relative_position_id = FMB_the_true_german_heirs
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			GER = {
+				exists = no
+			}
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = FMB_make_italy_cucks
+		icon = GFX_focus_attack_italy
+		prerequisite = { focus = FMB_turn_against_fascism }
+		relative_position_id = FMB_turn_against_fascism
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+			ETH = {
+				exists = yes
+				has_war_with = ITA
+			}
+		}
+
+		completion_reward = {
+			hidden_effect = {
+				ETH = {
+					load_oob = FMB_ETH_support
+					add_timed_idea = {
+						idea = FMB_ETH_boost
+						days = 365
+					}
+				}
+			}
+			ETH = {
+				add_opinion_modifier = {
+					target = FMB
+					modifier = offered_support
+				}
+			}
+			custom_effect_tooltip = FMB_boost_ETH_tt
+		}
+	}
+
+	focus = {
+		id = FMB_overthrow_femboystaat
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = FMB_turn_against_fascism }
+		relative_position_id = FMB_turn_against_fascism
+		x = 0
+		y = 2
+		cost = 5
+
+		available = {
+			fascism < 0.5
+		}
+
+		bypass = {
+			NOT = {
+				has_government = fascism
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		completion_reward = {
+			add_stability = -0.05
+			kill_country_leader = yes
+			create_country_leader = {
+				name = "Felix"
+				desc = "POLITICS_LEON_DEGRELLE_DESC"
+				picture = "Portrait_FMB_Felix.dds"
+				expire = "1965.1.1"
+				ideology = rexism
+				traits = {
+					great_war_hero
+				}
+			}
+			set_cosmetic_tag = FMB_military_council
+			set_party_name = { 
+				ideology = fascism 
+				long_name = FMB_army_council 
+				name = FMB_army_council 
+			}
+			unlock_decision_category_tooltip = FMB_reforming_government
+		}
+	}
+
+	focus = {
+		id = FMB_continue_military_rule
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = FMB_overthrow_femboystaat }
+		mutually_exclusive = { focus = FMB_start_rationing_food }
+		mutually_exclusive = { focus = FMB_bring_sports_back }
+		relative_position_id = FMB_overthrow_femboystaat
+		x = -2
+		y = 1
+		cost = 5
+
+		available = {
+			fascism > 0.3
+			has_country_flag = FMB_catboy_supremacy
+		}
+
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = FMB_expanding_race
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = FMB_continue_military_rule }
+		relative_position_id = FMB_continue_military_rule
+		x = -2
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+				unlock_decision_category_tooltip = FMB_catboy_conversions
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = FMB_based_antifa }
+					start_civil_war = {
+						ideology = democratic
+						size = 0.2
+					}
+				}
+			}
+			add_ideas = FMB_catboy_master_race
+		}
+	}
+
+	focus = {
+		id = FMB_anti_communism_instead_anti_fascism
+		icon = GFX_goal_anti_comintern_pact
+		prerequisite = { focus = FMB_continue_military_rule }
+		relative_position_id = FMB_continue_military_rule
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.1
+			}
+			add_stability = -0.05
+			swap_ideas = {
+				remove_idea = FMB_based_antifa
+				add_idea = FMB_anticom
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_kill_french_commies
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = FMB_anti_communism_instead_anti_fascism }
+		relative_position_id = FMB_anti_communism_instead_anti_fascism
+		x = 0
+		y = 1
+		cost = 10
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		available = {
+			FRA = {
+				communism > 0.01
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				target = FRA
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_catboy_centers
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = FMB_expanding_race }
+		relative_position_id = FMB_expanding_race
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = FMB
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = FMB_catboy_master_race
+				add_idea = FMB_catboy_master_race_2
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_proclaim_catboy_empire
+		icon = GFX_goal_molotov_ribbentrop_pact
+		prerequisite = { focus = FMB_catboy_centers }
+		prerequisite = { focus = FMB_kill_french_commies }
+		relative_position_id = FMB_expanding_race
+		x = 1
+		y = 2
+		cost = 10
+
+		available = {
+			controls_state = 16
+			controls_state = 18
+			controls_state = 27
+		}
+
+		completion_reward = {
+			set_cosmetic_tag = FMB_catboy_empire
+			add_state_core = 16
+			add_state_core = 18
+			add_state_core = 27
+			add_state_core = 8
+			LUX = {
+				country_event = femboy.9
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_crowning_king
+		icon = GFX_focus_generic_home_defense
+		prerequisite = { focus = FMB_proclaim_catboy_empire }
+		relative_position_id = FMB_proclaim_catboy_empire
+		x = 0
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_country_leader_trait = cat_king
+			if = {
+				limit = { GER = { has_government = neutrality } }
+				GER = {
+					add_opinion_modifier = {
+						target = FMB
+						modifier = medium_increase
+					}
+				}
+			}
+			if = {
+				limit = { YUG = { has_government = neutrality } }
+				YUG = {
+					add_opinion_modifier = {
+						target = FMB
+						modifier = medium_increase
+					}
+				}
+			}
+			if = {
+				limit = { HUN = { has_government = neutrality } }
+				HUN = {
+					add_opinion_modifier = {
+						target = FMB
+						modifier = medium_increase
+					}
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = FMB
+					modifier = medium_increase
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_royal_armory
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = FMB_crowning_king }
+		relative_position_id = FMB_crowning_king
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			set_capital = 27
+			27 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_bring_sports_back
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = FMB_overthrow_femboystaat }
+		mutually_exclusive = { focus = FMB_continue_military_rule }
+		mutually_exclusive = { focus = FMB_start_rationing_food }
+		relative_position_id = FMB_overthrow_femboystaat
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				democratic > 0.2
+				neutrality > 0.3
+				AND = {
+					neutrality > 0.15
+					democratic > 0.15
+				}
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+			country_event = femboy.6
+		}
+	}
+
+	focus = {
+		id = FMB_start_rationing_food
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = FMB_overthrow_femboystaat }
+		mutually_exclusive = { focus = FMB_continue_military_rule }
+		mutually_exclusive = { focus = FMB_bring_sports_back }
+		relative_position_id = FMB_overthrow_femboystaat
+		x = 2
+		y = 1
+		cost = 10
+
+		available = {
+			communism > 0.3
+		}
+
+		completion_reward = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = FMB_support_true_spain
+		icon = GFX_focus_focus_fra_intervention_spain
+		prerequisite = { focus = FMB_start_rationing_food }
+		relative_position_id = FMB_start_rationing_food
+		x = 0
+		y = 1
+		cost = 5
+
+		available = {
+			has_global_flag = spanish_civil_war
+			has_manpower > 10000
+		}
+
+		bypass = {
+			has_global_flag = scw_over
+		}
+
+		completion_reward = {
+			SPR = {
+				add_manpower = 10000
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					producer = FMB
+					amount = 2500
+				}
+				add_opinion_modifier = {
+					target = FMB
+					modifier = offered_support
+				}
+			}
+			add_manpower = -10000
+		}
+	}
+
+	focus = {
+		id = FMB_pinup_propaganda
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = FMB_support_true_spain }
+		relative_position_id = FMB_support_true_spain
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			NOT = {
+				has_completed_focus = FMB_cease_hornyposting
+			}
+		}
+
+		completion_reward = {
+			add_war_support = 0.1
+			add_political_power = 50
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_commodified_troops
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = FMB_pinup_propaganda }
+		relative_position_id = FMB_pinup_propaganda
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			NOT = {
+				has_completed_focus = FMB_cease_hornyposting
+			}
+		}
+
+		completion_reward = {
+			add_ideas = FMB_commodified_troops
+		}
+	}
+
+	focus = {
+		id = FMB_cease_hornyposting
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = FMB_start_rationing_food }
+		relative_position_id = FMB_start_rationing_food
+		x = 2
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			set_party_name = {
+				ideology = communism
+				long_name = FMB_khmer_rouge
+				name = FMB_khmer_rouge
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_begin_collectivization
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = FMB_cease_hornyposting }
+		relative_position_id = FMB_cease_hornyposting
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_collectivization 
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FMB_autarky
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = FMB_begin_collectivization }
+		relative_position_id = FMB_begin_collectivization
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_resource = {
+				type = rubber
+				amount = 2
+				state = 29
+			}
+			add_resource = {
+				type = tungsten
+				amount = 3
+				state = 34
+			}
+			add_tech_bonus = {
+				name = GER_autarky
+				bonus = 1.5
+				uses = 1
+				technology = excavation1
+				technology = excavation2
+				technology = excavation3
+				technology = excavation4
+				technology = excavation5
+			}
+			add_ideas = limited_exports
+		}
+	}
+
+	focus = {
+		id = FMB_expand_production
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = FMB_autarky }
+		relative_position_id = FMB_autarky
+		x = 1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_two_month_plan
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = FMB_expand_production }
+		relative_position_id = FMB_expand_production
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_anti_colony
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus = FMB_autarky }
+		relative_position_id = FMB_autarky
+		x = -1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_anti_colonial_sentiments
+			ENG = {
+					add_opinion_modifier = { target = FMB modifier = SAF_anti_colonialist_crusaders }
+			}
+			FRA = {
+					add_opinion_modifier = { target = FMB modifier = SAF_anti_colonialist_crusaders } 
+			}
+			POR = {
+					add_opinion_modifier = { target = FMB modifier = SAF_anti_colonialist_crusaders } 
+			}
+			HOL = {
+					add_opinion_modifier = { target = FMB modifier = SAF_anti_colonialist_crusaders } 
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_free_indies
+		icon = GFX_focus_hol_liberation
+		prerequisite = { focus = FMB_anti_colony }
+		relative_position_id = FMB_anti_colony
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			INS = {
+				is_subject_of = HOL
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				target = HOL
+				type = topple_government
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_take_france_factories
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = FMB_expand_production }
+		prerequisite = { focus = FMB_anti_colony }
+		relative_position_id = FMB_expand_production
+		x = -1
+		y = 2
+		cost = 10
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			create_wargoal = {
+				target = FRA
+				type = puppet_wargoal_focus
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_communist_question
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = FMB_bring_sports_back }
+		relative_position_id = FMB_bring_sports_back
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_political_power = 50
+			country_event = femboy.11
+		}
+	}
+
+	focus = {
+		id = FMB_appeal_fellow_democracies
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = FMB_communist_question }
+		relative_position_id = FMB_communist_question
+		x = 0
+		y = 1
+		cost = 10
+		allow_branch = { has_country_flag = FMB_tomboy_election }
+
+		completion_reward = {
+			every_country = {
+				limit = { has_government = democratic }
+				add_opinion_modifier = {
+					target = FMB
+					modifier = democratic_leanings_good
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_offer_lux_protection
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = FMB_appeal_fellow_democracies }
+		relative_position_id = FMB_appeal_fellow_democracies
+		x = 0
+		y = 1
+		cost = 10
+
+		bypass = {
+			LUX = {
+				OR = {
+					NOT = { has_government = democratic }
+					exists = no
+				}
+			}
+		}
+
+		completion_reward = {
+			add_state_core = 8
+			annex_country = {
+				target = LUX
+				transfer_troops = yes
+			}
+			add_country_leader_trait = generallissimo
+		}
+	}
+
+	focus = {
+		id = FMB_meuse_line
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = FMB_offer_lux_protection }
+		relative_position_id = FMB_offer_lux_protection
+		x = -1
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			34 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				hidden_effect = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = FMB_meuse_line_tt
+		}
+	}
+
+	focus = {
+		id = FMB_prepare_picardy
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = FMB_meuse_line }
+		relative_position_id = FMB_meuse_line
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			785 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_expand_trading_opportunities
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = FMB_offer_lux_protection }
+		relative_position_id = FMB_offer_lux_protection
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			OR = {
+				ENG = { has_government = democratic }
+				FRA = { has_government = democratic }
+				GER = { has_government = democratic }
+				USA = { has_government = democratic }
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = FMB_trade_guarantee_tt
+			if = {
+				limit = { ENG = { has_government = democratic } }
+				ENG = {
+					country_event = femboy.12
+				}
+			}
+			if = {
+				limit = { GER = { has_government = democratic } }
+				GER = {
+					country_event = femboy.12
+				}
+			}
+			if = {
+				limit = { FRA = { has_government = democratic } }
+				FRA = {
+					country_event = femboy.12
+				}
+			}
+			if = {
+				limit = { USA = { has_government = democratic } }
+				USA = {
+					country_event = femboy.12
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_cancel_french_aggression
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = FMB_prepare_picardy }
+		relative_position_id = FMB_prepare_picardy
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			FRA = {
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+				exists = yes
+			}
+			NOT = {
+				OR = {
+					has_war_with = FRA
+					has_war_with = GER
+				}
+			}
+			has_completed_focus = FMB_expand_trading_opportunities
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			FRA = {
+				declare_war_on = {
+					target = FMB
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_cancel_german_aggression
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = FMB_expand_trading_opportunities }
+		prerequisite = { focus = FMB_meuse_line }
+		relative_position_id = FMB_offer_lux_protection
+		x = 1
+		y = 3
+		cost = 10
+
+		available = {
+			OR = {
+				AND = {
+					is_guaranteed_by = ENG
+					ENG = { has_war_with = GER }
+				}
+				AND = {
+					is_guaranteed_by = FRA
+					FRA = { has_war_with = GER }
+				}
+			}
+
+			NOT = {
+				OR = {
+					has_war_with = FRA
+					has_war_with = GER
+				}
+			}
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = GER
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			GER = {
+				declare_war_on = {
+					target = FMB
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_send_women_back_kitchen
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = FMB_communist_question }
+		relative_position_id = FMB_communist_question
+		x = 0
+		y = 1
+		cost = 10
+		allow_branch = { has_country_flag = FMB_chad_election }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.15
+			}
+			add_stability = -0.05
+			add_ideas = FMB_women_in_kitchen
+		}
+	}
+
+	focus = {
+		id = FMB_mandatory_workouts
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = FMB_send_women_back_kitchen }
+		relative_position_id = FMB_send_women_back_kitchen
+		x = -1
+		y = 2
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_mandatory_workouts
+		}
+	}
+
+	focus = {
+		id = FMB_look_to_past
+		icon = GFX_focus_ger_revive_kaiserreich
+		prerequisite = { focus = FMB_send_women_back_kitchen }
+		relative_position_id = FMB_send_women_back_kitchen
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_looking_past
+			add_state_core = 18
+			add_state_core = 27
+		}
+	}
+
+	focus = {
+		id = FMB_reclaim_empire
+		icon = GFX_focus_generic_air_defense
+		prerequisite = { focus = FMB_look_to_past }
+		relative_position_id = FMB_look_to_past
+		x = 1
+		y = 1
+		cost = 10
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = FRA
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = FRA
+				generator = { 18 27 }
+				expire = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FMB_west_europe_bloc
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = FMB_reclaim_empire }
+		relative_position_id = FMB_reclaim_empire
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			controls_state = 18
+			controls_state = 27
+		}
+
+		completion_reward = {
+			create_faction = FMB_west_europe_bloc
+			set_capital = 18
+			18 = {
+				set_state_name = "Burgundy"
+			}
+			add_political_power = 100
+		}
+	}
+
+	focus = {
+		id = FMB_extreme_construction_crews
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = FMB_mandatory_workouts }
+		relative_position_id = FMB_mandatory_workouts
+		x = 0
+		y = 1
+		cost = 10
+
+		completion_reward = {
+			add_ideas = FMB_extreme_construction
+		}
+	}
+
+	focus = {
+		id = FMB_our_own_kaiserreich
+		icon = GFX_focus_attack_germany
+		prerequisite = { focus = FMB_west_europe_bloc }
+		prerequisite = { focus = FMB_extreme_construction_crews }
+		relative_position_id = FMB_extreme_construction_crews
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			GER = {
+				has_added_tension_amount > 5
+			}
+		}
+
+		select_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = GER
+				value = 100
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = GER
+				expire = 0
+			}
+		}
+	}
